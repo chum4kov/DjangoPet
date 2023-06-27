@@ -1,0 +1,50 @@
+{%extends 'todoapp/index.html'%}
+
+{%block content%}
+
+{% if request.user.is_authenticated == False%}
+    <h2>Зарегистрируйтесь или войдите в свой аккаунт, чтобы создавать и выполнять задачи</h2>
+{%else%}
+<div class="container">
+    <div class="sidebar"></div>
+    <div class="content">
+
+<h2>Ваши задачи:</h2>
+{% if task != 0 %}
+    {% for task in tasks %}
+    <div class="task">
+
+        {% if task.is_complete == False %}
+            <p>✖ {{task.title}}</p>
+            <a class="work" href="{% url 'update_task' task.id %}">Выполнить</a>
+        {% else %}
+            <p>✔ <strike> {{task.title}} </strike></p>
+            <a class="snyat" href="{% url 'update_task' task.id %}">Снять</a>
+        {% endif %}
+        <a id="delete" href="{% url 'delete_task' task.id %}">Удалить</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <h2>Нет задач</h2>
+{% endif %}
+
+        </div>
+</div>
+{% for p in tasks.paginator.page_range %}
+    {% if tasks.number != p %}
+    <li><a href="?page={{p}}">{{p}}</a></li>
+    {% else %}
+        <li>{{p}}</li>
+    {% endif %}
+{% endfor %}
+<hr>
+<div class="add-form">
+<form action="{% url 'add_task'%}" method="post">
+    {% csrf_token %}
+    <input name="text-task" class="form-control" placeholder="Добавьте задачу...">
+    <button>Добавить</button>
+</form>
+</div>
+{%endif%}
+
+{%endblock%}
