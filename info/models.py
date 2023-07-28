@@ -27,7 +27,7 @@ class Profile:
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #status = models.Choices()
     bio = models.TextField(max_length=500, blank=True)
-    photo = models.ImageField(upload_to='ava/')
+    photo = models.ImageField(upload_to='ava/', default='av.jpg')
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
