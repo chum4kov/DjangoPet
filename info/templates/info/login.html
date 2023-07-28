@@ -1,0 +1,10 @@
+{% extends 'info/home.html'%}
+
+{%block content%}
+    <form action="" method="POST">
+        {%csrf_token%}
+        {{ form.as_p }}
+        <button>Войти</button>
+        <p>Нет аккаунта?<a href="{% url 'reg' %}">Регистрация</a></p>
+    </form>
+{% endblock %}

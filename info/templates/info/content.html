@@ -1,0 +1,23 @@
+{% extends 'info/home.html' %}
+
+
+{%block content%}
+<div class="cards">
+{% for post in posts %}
+<div class="card" style="width: 300px;">
+
+    <img class="card-img-top" src="{{ post.image.url }}" alt="Not Image :(">
+    <div class="card-body">
+         <h5 class="card-title">{{post.name}}</h5>
+        <p class="card-text"> {{post.content|truncatewords:20}}</p>
+        {%for i in post.category.all %}
+            <p class="card-tag">{{i.name}}</p>
+        {%endfor%}
+        <p>Нравится {{post.likes.count }}♡</p>
+        <a href="{{post.get_absolute_url}}" class="btn btn-primary">Читать</a>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

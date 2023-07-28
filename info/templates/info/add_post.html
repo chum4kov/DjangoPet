@@ -1,0 +1,15 @@
+{% extends 'info/home.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    {% for f in form %}
+        <label class="form-label">{{f.label}}</label>
+        {{f}}
+        <br><br>
+    {% endfor %}
+        <button class="btn btn-primary" type="submit">Добавить</button>
+    </div>
+</form>
+{% endblock %}

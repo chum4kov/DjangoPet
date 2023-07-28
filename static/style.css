@@ -1,0 +1,25 @@
+
+
+
+.cards{
+    padding-top: 50px;
+    display:flex;
+    justify-content: center;
+}
+.card{
+    margin:10px 20px;
+}
+.card .card-tag{
+
+}
+
+.content{
+    position:absolute;
+    left: 10%;
+    right:10%;
+}
+.img-in-content{
+    width: 100%;
+    height: 400px;
+}
+

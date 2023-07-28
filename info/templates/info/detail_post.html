@@ -1,0 +1,15 @@
+{% extends 'info/home.html'%}
+
+{%load static%}
+
+{% block content %}
+<div class="content">
+
+    <img class="img-in-content" src="{{ post.image.url }}" alt="Not Image :(">
+    <h4 class="text-center">Детальный пост: post.name</h4>
+    <p class="text-break">{{post.content}}</p>
+    <p>Нравится {{post.likes.count}}<a href="{% url 'add-like' post.pk %}"><img src="{% static 'image/like.png' %}" alt="img"></a><p>
+
+</div>
+
+{%endblock%}
