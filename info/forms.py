@@ -22,7 +22,5 @@ class RegisterForm(UserCreationForm):
     username = forms.CharField(max_length=30, label='Имя')
     password1 = forms.CharField(max_length=30, widget=forms.PasswordInput(), label='Пароль')
     password2 = forms.CharField(max_length=30, widget=forms.PasswordInput(), label='Повтор пароля')
-    photo = forms.ImageField(upload_to='ava/', label='Фото')
-
     captcha = CaptchaField()
 

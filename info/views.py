@@ -80,3 +80,5 @@ def register(request):
 
 def profile(request, user_id):
     return render(request, 'info/profile.html')
+def edit_info(request, user_id):
+    return render(request, 'info/edit_info.html')

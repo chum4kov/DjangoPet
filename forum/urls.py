@@ -15,6 +15,7 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('profile/<int:user_id>/', profile, name='profile'),
+    path('profile/edit/info', edit_info, name='edit-info')
     path('captcha/', include('captcha.urls'))
 ]
 

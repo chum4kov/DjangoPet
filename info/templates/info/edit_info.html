@@ -1,4 +1,4 @@
-{% extends 'info/home.html' %}
+{% exntends 'info/home.html' %}
 
 {% block content %}
 
@@ -10,8 +10,10 @@
 
         <div class="main-info">
             <h4>Пользователь {{user.username}}</h4>
+          <form action="">
             <p>основаная инфа</p>
-            <a href="{% url 'edit-info' %}">edit</a>
+            <p>Изменения</p>
+          </form>
         </div>
     </div>
 {% endblock %}
