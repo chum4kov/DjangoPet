@@ -1,9 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from info.models import *
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -15,7 +16,7 @@ def home(request):
 def one_post(request, post_id):
     return render(request, 'info/detail_post.html', context={'post':Post.objects.get(pk=post_id)})
 
-
+@login_required
 def add_like(request, post_id):
     post = Post.objects.get(pk=post_id)
     #print(post.likes.all())
@@ -30,6 +31,7 @@ def add_like(request, post_id):
 def about(request):
     return HttpResponse("<h2>About</h2>")
 
+@login_required
 def add_post(request):
     form = AddPostForm()
     if request.method == "POST":
@@ -59,7 +61,7 @@ def login_user(request):
                 return redirect('home')
     data = {'form': form}
     return render(request, 'info/login.html', context=data)
-
+@login_required
 def logout_user(request):
     logout(request)
     return redirect('home')
@@ -77,8 +79,8 @@ def register(request):
             return redirect('/')
     data = {'form': form}
     return render(request, 'info/register.html', context=data)
-
+@login_required
 def profile(request, user_id):
     return render(request, 'info/profile.html')
-def edit_info(request, user_id):
-    return render(request, 'info/edit_info.html')
+
+

@@ -1,4 +1,4 @@
-{% exntends 'info/home.html' %}
+{% extends 'info/home.html' %}
 
 {% block content %}
 
@@ -9,10 +9,10 @@
         </div>
 
         <div class="main-info">
-            <h4>Пользователь {{user.username}}</h4>
-          <form action="">
-            <p>основаная инфа</p>
-            <p>Изменения</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+            <h4>Имя: {{form.username}}</h4>
+                <button type="submit">Сохранить</button>
           </form>
         </div>
     </div>

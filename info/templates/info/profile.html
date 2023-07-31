@@ -5,13 +5,13 @@
     <div class="content-page">
         <div class="left-bar">
 
-            <p>фото и инфа</p>
+            <p>фото </p>
         </div>
 
         <div class="main-info">
-            <h4>Пользователь {{user.username}}</h4>
-            <p>основаная инфа</p>
-            <a href="{% url 'edit-info' %}">edit</a>
+            <h4>{{user.username}} <small><a href="{% url 'edit-info' user.pk %}">edit</a></small></h4>
+            <p>Основаная информация</p>
+
         </div>
     </div>
 {% endblock %}

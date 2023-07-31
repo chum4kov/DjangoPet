@@ -10,6 +10,7 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, blank=True)
     #dislikes = models.ManyToManyField(User, blank=True)
     category = models.ManyToManyField('Category')
+    #creator = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -23,11 +24,4 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Profile:
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #status = models.Choices()
-    bio = models.TextField(max_length=500, blank=True)
-    photo = models.ImageField(upload_to='ava/', default='av.jpg')
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
 
