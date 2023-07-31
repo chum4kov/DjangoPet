@@ -7,10 +7,10 @@ class Post(models.Model):
     name = models.CharField(max_length=100)
     content = models.TextField(max_length=500, null=True)
     image = models.ImageField(upload_to='images/')
-    likes = models.ManyToManyField(User, blank=True)
+    likes = models.ManyToManyField(User, blank=True, related_name='like')
     #dislikes = models.ManyToManyField(User, blank=True)
     category = models.ManyToManyField('Category')
-    #creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True, related_name='creator')
 
     def __str__(self):
         return self.name

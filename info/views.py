@@ -81,6 +81,9 @@ def register(request):
     return render(request, 'info/register.html', context=data)
 @login_required
 def profile(request, user_id):
-    return render(request, 'info/profile.html')
+    p = get_object_or_404(User, pk=user_id)
+    data = {'profile': p}
+    return render(request, 'info/profile.html', context=data)
+
 
 
